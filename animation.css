@@ -1,0 +1,272 @@
+:root {
+    --bg: #0d1117;
+    --bg-alt: #161b22;
+    --text: #000000;
+    --accent: #58a6ff;
+    --accent-strong: #1f6feb;
+    --card-bg: #161b22;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+body.light {
+    --bg: #6d3558;
+    --bg-alt: #630d5c;
+    --text: #111827;
+    --accent: #2563eb;
+    --accent-strong: #1d4ed8;
+    --card-bg: #701a65;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Header */
+
+header {
+    background: var(--bg-alt);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #30363d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.logo img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+nav a {
+    margin: 0 10px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: var(--accent-strong);
+    transition: width 0.2s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+#theme-toggle {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Hero */
+
+.hero {
+    background: url("https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1600") center/cover;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+}
+
+.hero-text {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--accent);
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.btn-primary:hover {
+    background: var(--accent-strong);
+}
+
+/* Content */
+
+.content {
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.img-large {
+    width: 100%;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.shadow {
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+/* Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+/* Challenges */
+
+.challenge {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* Contact form */
+
+.contact-form {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #4b5563;
+    background: var(--bg-alt);
+    color: var(--text);
+}
+
+button {
+    padding: 10px;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #16a34a;
+}
+
+/* Lists */
+
+ol li {
+    margin-bottom: 5px;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: var(--bg-alt);
+    margin-top: 30px;
+}
+
+/* Animations */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+    header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    nav {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
