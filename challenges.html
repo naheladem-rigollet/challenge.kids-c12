@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Challenges – Red Flags</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="https://images.unsplash.com/photo-1605902711622-cfb43c4437b5?w=80" alt="Logo cybersécurité">
+        <span>Challenge Kids – Cyber</span>
+    </div>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="challenges.html" class="active">Challenges</a>
+        <a href="aide.html">Aide</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <button id="theme-toggle">🌙</button>
+</header>
+
+<section class="content fade-in">
+    <h1>Analyse des Red Flags</h1>
+    <p>Chaque défi présente un cas réel de mauvaise pratique de sécurité.</p>
+
+    <article class="challenge">
+        <h2>Défi 1 – Mot de passe trop simple</h2>
+        <p><strong>Indice :</strong> « qqq#1 : doudou : trouvé sur le web à l'aide d'un site web qui référence les 10 mots de passes les + utilisés ».</p>
+        <p><strong>Red Flag :</strong> mot de passe « doudou » parmi les plus utilisés.</p>
+        <p><strong>Méthode :</strong> chercher une liste des 10 mots de passe les plus utilisés, tester « doudou ».</p>
+        <p><strong>Risque :</strong> piratage immédiat, accès non autorisé aux comptes.</p>
+        <p><strong>Solution Blue Team :</strong> politique de mots de passe forts, blocage des mots de passe courants, MFA.</p>
+    </article>
+
+    <article class="challenge">
+        <h2>Défi 2 – Infos sensibles dans le code HTML</h2>
+        <p><strong>Indice :</strong> « #2 : HTML=langage-du-web! : via code source ».</p>
+        <p><strong>Red Flag :</strong> identifiants ou indices trop explicites dans le code source.</p>
+        <p><strong>Solution :</strong> ne jamais stocker de secrets côté client, gérer la logique sensible côté serveur.</p>
+    </article>
+
+    <article class="challenge">
+        <h2>Défi 3 – Dossiers non sécurisés</h2>
+        <p><strong>Indice :</strong> « Dossiers_non_securises_007 : via code source, indice qui nous dit de chercher dans les trois dossiers possibles: sources, images ou config… ».</p>
+        <p><strong>Red Flag :</strong> accès direct à des dossiers comme <em>config</em> contenant des fichiers sensibles.</p>
+        <p><strong>Solution :</strong> restreindre l’accès aux dossiers, configurer le serveur (droits, .htaccess).</p>
+    </article>
+
+    <article class="challenge">
+        <h2>Défi 4 – Hash MD5 dans un fichier</h2>
+        <p><strong>Indice :</strong> hash « 8ebbdb6e5d4a352d6b0b06d4ac8c55e5 » dans un fichier <em>dico.txt</em>.</p>
+        <p><strong>Red Flag :</strong> mot de passe stocké avec MD5 et fichier accessible.</p>
+        <p><strong>Solution :</strong> utiliser des fonctions de hachage modernes (ex : SHA‑256 + sel) et protéger les fichiers.</p>
+    </article>
+
+    <article class="challenge">
+  <h2>Défi 5  Texte masqué dans le CSS</h2>
+  <p><strong>Indice :</strong> « Inspecter la page et vérifier les styles appliqués. Une couleur peut en cacher une autre… »</p>
+  <p><strong>Red Flag :</strong> Information sensible (le flag) rendue invisible en utilisant une couleur de texte identique à la couleur du fond.  
+  Le texte était présent dans le HTML mais masqué via le CSS.</p>
+  <p><strong>Explication :</strong> En ouvrant l’inspecteur (F12), on voit que le texte est écrit en noir sur un fond noir.  
+  En modifiant la propriété <code>background-color</code> ou <code>color</code>, le flag apparaît immédiatement.</p>
+  <p><strong>Flag :</strong> <span style="color: var(--accent); font-weight: bold;">h7ml_c3st_j0li</span></p>
+  <p><strong>Solution :</strong> Ne jamais cacher des informations sensibles via du CSS.  
+  Les données critiques doivent être supprimées du code HTML et stockées côté serveur.  
+  Le CSS n’est pas une mesure de sécurité.</p>
+</article>
+
+
+    <article class="challenge">
+        <h2>Défi 6 – Mot de passe dans les cookies</h2>
+        <p><strong>Indice :</strong> « c00k1es_4re_amaz1n9 on inspecte la page, on va sur applications, on clique sur cookie et on obtient le mot de passe pour cookie pour admin ».</p>
+        <p><strong>Red Flag :</strong> mot de passe ou info critique stockée en clair dans un cookie.</p>
+        <p><strong>Solution :</strong> utiliser des jetons de session, cookies HttpOnly + Secure, jamais de mot de passe en clair.</p>
+    </article>
+
+    <article class="challenge">
+        <h2>Défis 7 & 8 – Logique en JavaScript côté client</h2>
+        <p><strong>Indice 7 :</strong> « JS_C0d3_Sh4ll_b3_S3cured! ».</p>
+        <p><strong>Indice 8 :</strong> « j4v4scr!pt=cot3_cli3nt » avec un score et un lien .php visibles dans le code.</p>
+        <p><strong>Red Flag :</strong> sécurité (scores, droits, accès) gérée uniquement en JavaScript.</p>
+        <p><strong>Solution :</strong> toujours vérifier les droits et les actions côté serveur, ne jamais faire confiance au client.</p>
+    </article>
+</section>
+
+<footer>
+    <p>© 2024 – Projet Cybersécurité Challenge Kids</p>
+</footer>
+
+</body>
+</html>
