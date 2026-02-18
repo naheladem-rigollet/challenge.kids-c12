@@ -57,6 +57,20 @@
     </article>
 
     <article class="challenge">
+  <h2>Défi 5  Texte masqué dans le CSS</h2>
+  <p><strong>Indice :</strong> « Inspecter la page et vérifier les styles appliqués. Une couleur peut en cacher une autre… »</p>
+  <p><strong>Red Flag :</strong> Information sensible (le flag) rendue invisible en utilisant une couleur de texte identique à la couleur du fond.  
+  Le texte était présent dans le HTML mais masqué via le CSS.</p>
+  <p><strong>Explication :</strong> En ouvrant l’inspecteur (F12), on voit que le texte est écrit en noir sur un fond noir.  
+  En modifiant la propriété <code>background-color</code> ou <code>color</code>, le flag apparaît immédiatement.</p>
+  <p><strong>Flag :</strong> <span style="color: var(--accent); font-weight: bold;">h7ml_c3st_j0li</span></p>
+  <p><strong>Solution :</strong> Ne jamais cacher des informations sensibles via du CSS.  
+  Les données critiques doivent être supprimées du code HTML et stockées côté serveur.  
+  Le CSS n’est pas une mesure de sécurité.</p>
+</article>
+
+
+    <article class="challenge">
         <h2>Défi 6 – Mot de passe dans les cookies</h2>
         <p><strong>Indice :</strong> « c00k1es_4re_amaz1n9 on inspecte la page, on va sur applications, on clique sur cookie et on obtient le mot de passe pour cookie pour admin ».</p>
         <p><strong>Red Flag :</strong> mot de passe ou info critique stockée en clair dans un cookie.</p>
@@ -73,9 +87,8 @@
 </section>
 
 <footer>
-    <p>© 2026 – Projet Cybersécurité Challenge Kids</p>
+    <p>© 2024 – Projet Cybersécurité Challenge Kids</p>
 </footer>
 
 </body>
 </html>
-
